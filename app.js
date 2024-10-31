@@ -7,6 +7,13 @@ const io = socketio(server);
 const path = require("path");
 const PORT = 3000;
 
+
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'");
+  next();
+});
+
+
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
