@@ -1,5 +1,7 @@
 console.log("first")
-const socket = io();
+const socket = io({
+  transports: ["polling"] // forces Socket.IO to use polling
+});
 
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition(
