@@ -7,7 +7,6 @@ const io = socketio(server);
 const path = require("path");
 const PORT = 3000;
 
-app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", function (socket) {
@@ -21,7 +20,7 @@ io.on("connection", function (socket) {
 });
 
 app.get("/", function (req, res) {
-  res.render("index");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 
